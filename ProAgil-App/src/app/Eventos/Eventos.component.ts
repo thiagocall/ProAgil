@@ -9,7 +9,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EventosComponent implements OnInit {
 
-  eventos: any;
+  eventos: any = [];
+  imagemlargura = 50;
+  imagemMargem = 2;
+  mostrarImagem = false;
 
   constructor(private http: HttpClient) { }
 
@@ -17,9 +20,15 @@ export class EventosComponent implements OnInit {
     this.getEventos();
   }
 
+
+  alternarImagem() {
+    this.mostrarImagem = !this.mostrarImagem;
+  }
+
   getEventos() {
     this.http.get('http://localhost:5000/api/values').subscribe(data => {
       this.eventos = data;
+      console.log(this.eventos);
     },
     error => {
       console.log(error);

@@ -1,12 +1,67 @@
-<p>
-  Eventos works!
-</p>
+<form class="form-inline">
+  <div class="form-group mb-2" >
+    <input type="text" class="form-control mr-2" placeholder="buscar">
+    <button class="btn btn-outline-success">buscar</button>
+  </div>
+</form>
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th>
+        <button class="btn btn-primary"
+        (click)="alternarImagem()">
+          Mostrar Imagens
+        </button>
+      </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Quantidade de Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos.length">
+    <tr *ngFor="let evento of eventos">
+      <td>
+        <img *ngIf="mostrarImagem"
+        src="http://localhost:5000/img/{{evento.imagemUrl}}" alt=""
+        [style.width.px]="imagemlargura"
+        [style.margin.px]="imagemMargem">
+      </td> 
+      <td>{{evento.eventoId}}</td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dataevento}}</td>
+      <td>{{evento.qtdpessoas}}</td>
+      <td>{{evento.lote}}</td>
+      <td>
+        <button class="btn btn-warning">
+          editar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="7" class="text-center">
+        <h4>
+          Nenhum evento encontrado
+        </h4>
+        
+      </td>
+    </tr>
+  </tfoot>
+</table>
 
-<div *ngFor="let evento of eventos">
-  Tema: {{evento.tema}}
-  <br>
-  Local: {{evento.local}}
-  <hr>
-</div>
 
-  
+<!--
+  <div *ngFor="let evento of eventos">
+    Tema: {{evento.tema}}
+    <br>
+    Local: {{evento.local}}
+    <hr>
+  </div>
+-->
+
