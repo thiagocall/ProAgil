@@ -7,7 +7,7 @@
 </div>
 <h3>Filtro: {{filtroLista}}</h3>
 <table class="table table-striped">
-  <thead class="thead-light">
+  <thead class="thead-light" >
     <tr>
       <th>
         <button class="btn btn-primary"
@@ -24,7 +24,7 @@
       <th>Opções</th>
     </tr>
   </thead>
-  <tbody *ngIf="eventos.length">
+  <tbody *ngIf="eventos.length && eventos" >
     <tr *ngFor="let evento of eventosfiltrados">
       <td>
         <img *ngIf="mostrarImagem"

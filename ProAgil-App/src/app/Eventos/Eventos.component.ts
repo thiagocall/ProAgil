@@ -9,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EventosComponent implements OnInit {
 
-  _filtrolista = '';
+  _filtroLista = '';
 
-  get filtroLista() {
-    return this._filtrolista;
+  get filtroLista(): string {
+    return this._filtroLista;
   }
   set filtroLista(value: string) {
-    this._filtrolista = value;
+    this._filtroLista = value;
     this.eventosfiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
 
@@ -29,7 +29,7 @@ export class EventosComponent implements OnInit {
 
   ngOnInit() {
     this.getEventos();
-    this.eventosfiltrados = this.eventos;
+    // this.eventosfiltrados = this.eventos;
   }
 
 
@@ -48,7 +48,8 @@ export class EventosComponent implements OnInit {
   getEventos() {
     this.http.get('http://localhost:5000/api/values').subscribe(data => {
       this.eventos = data;
-      console.log(this.eventos);
+      // console.log(this.eventos);
+      this.eventosfiltrados = this.eventos;
     },
     error => {
       console.log(error);
