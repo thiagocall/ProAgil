@@ -9,7 +9,7 @@ using ProAgil.Repository;
 namespace ProAgil.Repository.Migrations
 {
     [DbContext(typeof(ProAgilContext))]
-    [Migration("20190908201811_init")]
+    [Migration("20190912121657_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace ProAgil.Repository.Migrations
 
             modelBuilder.Entity("ProAgil.Domain.Evento", b =>
                 {
-                    b.Property<int>("EventoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DataEvento");
@@ -37,7 +37,7 @@ namespace ProAgil.Repository.Migrations
 
                     b.Property<string>("Tema");
 
-                    b.HasKey("EventoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Eventos");
                 });

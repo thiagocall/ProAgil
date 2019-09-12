@@ -18,7 +18,7 @@ namespace ProAgil.Repository.Migrations
 
             modelBuilder.Entity("ProAgil.Domain.Evento", b =>
                 {
-                    b.Property<int>("EventoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DataEvento");
@@ -35,7 +35,7 @@ namespace ProAgil.Repository.Migrations
 
                     b.Property<string>("Tema");
 
-                    b.HasKey("EventoId");
+                    b.HasKey("Id");
 
                     b.ToTable("Eventos");
                 });

@@ -11,7 +11,7 @@ namespace ProAgil.Repository.Migrations
                 name: "Eventos",
                 columns: table => new
                 {
-                    EventoId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Local = table.Column<string>(nullable: true),
                     DataEvento = table.Column<DateTime>(nullable: false),
@@ -23,7 +23,7 @@ namespace ProAgil.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eventos", x => x.EventoId);
+                    table.PrimaryKey("PK_Eventos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,7 +63,7 @@ namespace ProAgil.Repository.Migrations
                         name: "FK_Lotes_Eventos_EventoId",
                         column: x => x.EventoId,
                         principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -81,7 +81,7 @@ namespace ProAgil.Repository.Migrations
                         name: "FK_PalestranteEventos_Eventos_EventoId",
                         column: x => x.EventoId,
                         principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PalestranteEventos_Palestrantes_PalestranteId",
@@ -109,7 +109,7 @@ namespace ProAgil.Repository.Migrations
                         name: "FK_RedeSociais_Eventos_EventoId",
                         column: x => x.EventoId,
                         principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RedeSociais_Palestrantes_PalestranteId",
