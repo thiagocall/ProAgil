@@ -7,12 +7,13 @@ namespace ProAgil.Repository
 {
     public class ProAgilRepository : IProAgilRepository
     {
-        public ProAgilContext _context { get; }
+        private ProAgilContext _context { get; }
 
         public ProAgilRepository(ProAgilContext context)
         {
             this._context = context;
         }
+        
         //GERAIS
         public void Add<T>(T entity) where T : class
         {

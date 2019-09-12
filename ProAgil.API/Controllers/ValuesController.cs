@@ -27,14 +27,6 @@ namespace ProAgil.API.Controllers
         public async Task<IActionResult> Get()
         {
             
-              /* var testeRange = Enumerable.Range(1,250000000);
-
-            Parallel.ForEach(testeRange, (int t) =>{
-
-                double i1 = Math.Sqrt(t);
-                double i2 = Math.Pow(i1,2);
-
-            }); */
             try
             {
                 var results = await _context.Eventos.ToListAsync();
