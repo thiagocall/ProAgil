@@ -9,7 +9,7 @@ using ProAgil.Repository;
 namespace ProAgil.Repository.Migrations
 {
     [DbContext(typeof(ProAgilContext))]
-    [Migration("20190912121657_init")]
+    [Migration("20190912133734_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,12 +131,12 @@ namespace ProAgil.Repository.Migrations
 
             modelBuilder.Entity("ProAgil.Domain.PalestranteEvento", b =>
                 {
-                    b.HasOne("ProAgil.Domain.Evento")
+                    b.HasOne("ProAgil.Domain.Evento", "Evento")
                         .WithMany("PalestranteEventos")
                         .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ProAgil.Domain.Palestrante")
+                    b.HasOne("ProAgil.Domain.Palestrante", "Palestrante")
                         .WithMany("PalestranteEventos")
                         .HasForeignKey("PalestranteId")
                         .OnDelete(DeleteBehavior.Cascade);
