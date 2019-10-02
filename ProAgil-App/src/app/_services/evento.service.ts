@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Evento } from '../_models/Evento';
 
 @Injectable({
-  providedIn: 'root'
+ providedIn: 'root'
 })
 export class EventoService {
-baseURl = 'httl//localhost:5000/api/evento';
+baseURl = 'http://localhost:5000/api/evento';
   constructor(private http: HttpClient) { }
 
-getEvento() {
+getAllEvento(): Observable<Evento[]> {
+  return this.http.get<Evento[]>(this.baseURl);
 
-  return this.http.get(this.baseURl);
+}
+
+getEventoByTema(tema: string): Observable<Evento[]> {
+  return this.http.get<Evento[]>('${this.baseURl}/getByTema/${tema}');
+
+}
+getEventoById(id: number): Observable<Evento> {
+  return this.http.get<Evento>('${this.baseURl}/${id}');
 
 }
 
