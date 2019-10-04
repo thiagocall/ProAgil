@@ -2,6 +2,11 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventoService } from '../_services/evento.service';
 import { Evento } from '../_models/Evento';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales } from 'ngx-bootstrap/chronos';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale  } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-eventos',
@@ -12,7 +17,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 export class EventosComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
-
   eventosfiltrados: Evento[];
   eventos: Evento[];
   imagemlargura = 50;
@@ -22,9 +26,14 @@ export class EventosComponent implements OnInit {
 
   _filtroLista = '';
 
-  constructor(private eventoService: EventoService, private modalService: BsModalService) { }
+  constructor(private eventoService: EventoService, private modalService: BsModalService, private localeService: BsLocaleService) {
+    localeService.use('pt-br');
+  }
 
 
+  // showDt() {
+  //   this.localeService.use(this.locale);
+  // }
   get filtroLista(): string {
     return this._filtroLista;
   }
@@ -40,6 +49,9 @@ export class EventosComponent implements OnInit {
 
   ngOnInit() {
   this.getEventos();
+
+  // this.showDt();
+
     // this.eventosfiltrados = this.eventos;
   }
 
