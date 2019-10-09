@@ -6,6 +6,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { listLocales } from 'ngx-bootstrap/chronos';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale  } from 'ngx-bootstrap/locale';
+import { FormGroup, FormControl, FormControlName, Validators } from '@angular/forms';
 defineLocale('pt-br', ptBrLocale);
 
 @Component({
@@ -23,6 +24,8 @@ export class EventosComponent implements OnInit {
   imagemMargem = 2;
   mostrarImagem = false;
   modalRef: BsModalRef;
+  registerForm: FormGroup;
+
 
   _filtroLista = '';
 
@@ -48,6 +51,7 @@ export class EventosComponent implements OnInit {
   }
 
   ngOnInit() {
+  this.validation();
   this.getEventos();
 
   // this.showDt();
@@ -66,6 +70,25 @@ export class EventosComponent implements OnInit {
 
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
+  }
+
+  validation() {
+    this.registerForm = new FormGroup({
+      tema: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]),
+      local: new FormControl('', Validators.required ),
+      dataEvento: new FormControl('', Validators.required),
+      qtdPessoas: new FormControl('', [Validators.required, Validators.max(120000)] ),
+      imagemURL: new FormControl('', Validators.required ),
+      telefone: new FormControl('', Validators.required ),
+      email: new FormControl('', [Validators.required, Validators.email] ),
+      
+
+      
+    })
+  }
+
+  salvarAlteracao() {
+
   }
 
   getEventos() {
